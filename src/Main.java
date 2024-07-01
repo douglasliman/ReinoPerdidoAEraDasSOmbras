@@ -7,19 +7,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Arqueiro heroi = new Arqueiro();
+        Guerreiro heroi = new Guerreiro();
         heroi.setNome("Guerreiro");
         heroi.setPontosVida(100);
         heroi.setPontosMana(50);
         heroi.setPontosAtaque(20);
         heroi.setPontosDefesa(15);
+        heroi.setForca(1);
+        heroi.setCarisma(3);
         heroi.setNivel(1);
         heroi.setExperiencia(0);
         heroi.setGold(0);
 
         List<Item> itensDisponiveis = new ArrayList<>();
         itensDisponiveis.add(new Item("Espada", 5, 0, 0, 0, 0, 0, 50, "Comum"));
-        //FACA INIMIGO
+        // FACA INIMIGO
         Inimigo inimigo = new Inimigo();
         inimigo.setNome("Goblin");
         inimigo.setPontosVida(50);
@@ -32,8 +34,6 @@ public class Main {
         inimigo.setExperiencia(50);
         inimigo.setGold(10);
         inimigo.setITENS_DISPONIVEIS(itensDisponiveis);
-
-
 
         boolean jogando = true;
 

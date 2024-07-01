@@ -3,8 +3,8 @@ package Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract  class Personagem {
-   private String nome;
+public class Personagem {
+    private String nome;
     private int pontosVida;
     private int pontosMana;
     private int pontosAtaque;
@@ -16,7 +16,8 @@ public abstract  class Personagem {
     private TipoEfeito efeito;
     private int turnosEfeito;
 
-    public Personagem(String nome, int pontosVida, int pontosMana, int pontosAtaque, int pontosDefesa, int nivel, int experiencia, int gold, List<Habilidade> habilidades, TipoEfeito efeito, int turnosEfeito) {
+    public Personagem(String nome, int pontosVida, int pontosMana, int pontosAtaque, int pontosDefesa, int nivel,
+            int experiencia, int gold, List<Habilidade> habilidades, TipoEfeito efeito, int turnosEfeito) {
         this.nome = nome;
         this.pontosVida = pontosVida;
         this.pontosMana = pontosMana;
@@ -25,12 +26,13 @@ public abstract  class Personagem {
         this.nivel = nivel;
         this.experiencia = experiencia;
         this.gold = gold;
-        this.habilidades = new ArrayList<>();;
-        this.efeito = null ;
+        this.habilidades = new ArrayList<>();
+        ;
+        this.efeito = null;
         this.turnosEfeito = turnosEfeito;
     }
 
-    public Personagem(){
+    public Personagem() {
 
     }
 
@@ -66,6 +68,7 @@ public abstract  class Personagem {
             }
         }
     }
+
     public int calcularDano(Personagem inimigo) {
         return Math.max(0, this.pontosAtaque - inimigo.pontosDefesa);
     }
@@ -82,8 +85,9 @@ public abstract  class Personagem {
             System.out.println("Vida atual do " + inimigo.getNome() + ": " + inimigo.getPontosVida());
         }
     }
+
     private void aplicarEfeitoAleatorio(Personagem inimigo) {
-        int chance = (int) (Math.random()*100);
+        int chance = (int) (Math.random() * 100);
         if (this instanceof Guerreiro && chance < 40) {
             inimigo.aplicarEfeito(TipoEfeito.ATORDOADO);
             System.out.println(inimigo.getNome() + " foi atordoado!");
@@ -140,11 +144,10 @@ public abstract  class Personagem {
 
     public void faltaExperiencia(int xp) {
         if (getExperiencia() < 100) {
-            System.out.println("Você precisa de mais " + (100 - getExperiencia()) + " de experiência para subir de nível!");
+            System.out.println(
+                    "Você precisa de mais " + (100 - getExperiencia()) + " de experiência para subir de nível!");
         }
     }
-
-
 
     public void defender(int quantidadeDano) {
         int defesa = getPontosDefesa() + getPontosVida() - quantidadeDano;
