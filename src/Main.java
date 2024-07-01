@@ -7,20 +7,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Guerreiro heroi = new Guerreiro();
-        heroi.setNome("Guerreiro");
-        heroi.setPontosVida(100);
-        heroi.setPontosMana(50);
-        heroi.setPontosAtaque(20);
-        heroi.setPontosDefesa(15);
-        heroi.setForca(1);
-        heroi.setCarisma(3);
-        heroi.setNivel(1);
-        heroi.setExperiencia(0);
-        heroi.setGold(0);
+        Personagem heroi = escolherPersonagem(scanner);
 
         List<Item> itensDisponiveis = new ArrayList<>();
         itensDisponiveis.add(new Item("Espada", 5, 0, 0, 0, 0, 0, 50, "Comum"));
+
         // FACA INIMIGO
         Inimigo inimigo = new Inimigo();
         inimigo.setNome("Goblin");
@@ -61,6 +52,70 @@ public class Main {
         }
 
         System.out.println("Obrigado por jogar!");
+    }
+
+    public static Personagem escolherPersonagem(Scanner scanner) {
+        System.out.println("Escolha seu personagem:");
+        System.out.println("1. Guerreiro");
+        System.out.println("2. Arqueiro");
+        System.out.println("3. Mago");
+        System.out.print("Escolha uma opção: ");
+        int escolha = scanner.nextInt();
+
+        switch (escolha) {
+            case 1:
+                return criarGuerreiro();
+            case 2:
+                return criarArqueiro();
+            case 3:
+                return criarMago();
+            default:
+                System.out.println("Opção inválida! Escolhendo Guerreiro por padrão.");
+                return criarGuerreiro();
+        }
+    }
+
+    public static Guerreiro criarGuerreiro() {
+        Guerreiro guerreiro = new Guerreiro();
+        guerreiro.setNome("Guerreiro");
+        guerreiro.setPontosVida(100);
+        guerreiro.setPontosMana(50);
+        guerreiro.setPontosAtaque(20);
+        guerreiro.setPontosDefesa(15);
+        guerreiro.setForca(1);
+        guerreiro.setCarisma(3);
+        guerreiro.setNivel(1);
+        guerreiro.setExperiencia(0);
+        guerreiro.setGold(0);
+        return guerreiro;
+    }
+
+    public static Arqueiro criarArqueiro() {
+        Arqueiro arqueiro = new Arqueiro();
+        arqueiro.setNome("Arqueiro");
+        arqueiro.setPontosVida(80);
+        arqueiro.setPontosMana(60);
+        arqueiro.setPontosAtaque(15);
+        arqueiro.setPontosDefesa(10);
+        arqueiro.setDestreza(2);
+        arqueiro.setNivel(1);
+        arqueiro.setExperiencia(0);
+        arqueiro.setGold(0);
+        return arqueiro;
+    }
+
+    public static Mago criarMago() {
+        Mago mago = new Mago();
+        mago.setNome("Mago");
+        mago.setPontosVida(60);
+        mago.setPontosMana(100);
+        mago.setPontosAtaque(25);
+        mago.setPontosDefesa(5);
+        mago.setInteligencia(2);
+        mago.setNivel(1);
+        mago.setExperiencia(0);
+        mago.setGold(0);
+        return mago;
     }
 
     public static void iniciarBatalha(Personagem heroi, Inimigo inimigo, Scanner scanner) {
